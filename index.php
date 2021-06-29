@@ -1,10 +1,30 @@
+<?php
+
+require_once "admin/function/connection.php";
+
+session_start();
+
+if(isset($_SESSION['username'])){
+  if($_SESSION['role'] == '0'){
+    header('location: ./admin');
+  }else{
+    header('location: ./user');
+  }
+}
+
+if (isset($_POST['username']) && isset($_POST['password'])){
+  require_once "admin/function/login.php";
+}
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PAM APP</title>
+    <title>PDAM APP</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
@@ -30,24 +50,24 @@
     <div class="login-content">
 
         <div class="nk-block toggled" id="l-login">
-            <div class="nk-form">
-                <div class="input-group">
-                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
-                    <div class="nk-int-st">
-                        <input type="text" class="form-control" placeholder="Username">
+            <form method="POST">
+                <div class="nk-form">
+                    <div class="input-group">
+                        <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
+                        <div class="nk-int-st">
+                            <input type="text" class="form-control" placeholder="Username" name="username">
+                        </div>
                     </div>
-                </div>
-                <div class="input-group mg-t-15">
-                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
-                    <div class="nk-int-st">
-                        <input type="password" class="form-control" placeholder="Password">
+                    <div class="input-group mg-t-15">
+                        <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
+                        <div class="nk-int-st">
+                            <input type="password" class="form-control" placeholder="Password" name="password">
+                        </div>
                     </div>
-                </div>
                 
-                <a href="admin"
-                    class="btn btn-login btn-success btn-float"><i
-                        class="notika-icon notika-right-arrow right-arrow-ant"></i></a>
-            </div>
+                    <button type="submit" class="btn btn-login btn-success btn-float"><i class="notika-icon notika-right-arrow right-arrow-ant"></i></button>
+                </div>
+            </form>
         </div>
 
     </div>

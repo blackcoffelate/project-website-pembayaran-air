@@ -118,12 +118,12 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Nomor SAMB.</th>
+                                                <th>No Sambungan</th>
+                                                <th>No Rekening</th>
                                                 <th>Nama Lengkap</th>
                                                 <th>Alamat</th>
                                                 <th>Golongan</th>
                                                 <th>Jenis</th>
-                                                <th>Nomor Rekening</th>
                                                 <th>Status Bulan ini</th>
                                                 <th>Action</th>
                                             </tr>
@@ -132,22 +132,22 @@
                                             <tr>
                                                 <td>1</td>
                                                 <td>0473</td>
+                                                <td>0000271</td>
                                                 <td>Suradi</td>
                                                 <td>Perum PJKA Jl. Kol. Burlian Martapura</td>
                                                 <td>A I</td>
                                                 <td>Rumah Yatim Piatu</td>
-                                                <td>0000271</td>
                                                 <td><span class="btn btn-success" disabled>Sudah bayar</span></td>
                                                 <td><a href="list_pembayaran"><i class="notika-icon notika-dollar"></i></a> &nbsp; <a href="#"><i class="notika-icon notika-draft"></i></a> &nbsp; <a href="#"><i class="notika-icon notika-trash"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
                                                 <td>0473</td>
+                                                <td>0000271</td>
                                                 <td>Suradi</td>
                                                 <td>Perum PJKA Jl. Kol. Burlian Martapura</td>
                                                 <td>A I</td>
                                                 <td>Rumah Yatim Piatu</td>
-                                                <td>0000271</td>
                                                 <td><span class="btn btn-danger" disabled>Belum bayar</span></td>
                                                 <td><a href="list_pembayaran"><i class="notika-icon notika-dollar"></i></a> &nbsp; <a href="#"><i class="notika-icon notika-draft"></i></a> &nbsp; <a href="#"><i class="notika-icon notika-trash"></i></a></td>
                                             </tr>
@@ -155,12 +155,12 @@
                                         <tfoot>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Nomor SAMB.</th>
+                                                <th>No Sambungan</th>
+                                                <th>No Rekening</th>
                                                 <th>Nama Lengkap</th>
                                                 <th>Alamat</th>
                                                 <th>Golongan</th>
                                                 <th>Jenis</th>
-                                                <th>Nomor Rekening</th>
                                                 <th>Status Bulan ini</th>
                                                 <th>Action</th>
                                             </tr>

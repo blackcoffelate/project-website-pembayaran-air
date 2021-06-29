@@ -1,3 +1,15 @@
+<?php
+
+require_once  "./function/session.php";
+
+$access = $_SESSION['role'];
+
+if(isset($_POST['nomor_sambungan'])){
+    require_once "function/pengguna_add.php";
+}
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -5,7 +17,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PAM APP</title>
+    <title>PDAM APP</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="../img/icons.png">
@@ -45,7 +57,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="logo-area">
                         <a href="#"><img src="../img/icons.png" style="width:45px; height:45px;" alt="" /><strong
-                                style="color:#fff; font-size:18px; margin-left:15px;">PAM APP.</strong></a>
+                                style="color:#fff; font-size:18px; margin-left:15px;">PDAM APP.</strong></a>
                     </div>
                 </div>
             </div>
@@ -72,83 +84,207 @@
         </div>
     </div>
 
-    <div class="breadcomb-area">
+    <div class="form-element-area">
         <div class="container">
+
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="breadcomb-list">
+                    <div class="form-element-list">
+                        <div class="cmp-tb-hd bcs-hd">
+                            <h2>Form Pendaftaran Pengguna</h2>
+                            <p>Masukan data sesuai dengan form yang tersedia. </p>
+                        </div>
+                        <?php 
+                            if (isset($check_data)){
+                                echo $check_data;
+                            }
+                        ?>
+                        <form method="POST">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="breadcomb-wp">
-                                    <div class="breadcomb-icon">
-                                        <i class="notika-icon notika-form"></i>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="fa fa-puzzle-piece"></i>
                                     </div>
-                                    <div class="breadcomb-ctn">
-                                        <h2>Pengguna</h2>
-                                        <p>Menu ini berisikan daftar pengguna. <span class="bread-ntd">Isikan data sesuai dengan ketentuan.</span></p>
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" placeholder="Nomor sambungan ..." name="nomor_sambungan">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                                <div class="breadcomb-report">
-                                    <button data-toggle="tooltip" data-placement="left" title="Download Report"
-                                        class="btn"><i class="notika-icon notika-sent"></i></button>
-                                    <a href="add_pengguna" class="btn">Tambah Data</a>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="fa fa-newspaper-o"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" placeholder="Nomor rekenig ..." name="nomor_rekening">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="fa fa-smile-o"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" placeholder="Nama pengguna ..." name="nama_pengguna">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="fa fa-map-o"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" placeholder="Alamat pengguna ..." name="alamat_pengguna">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="fa fa-users"></i>
+                                    </div>
+                                    <div class="bootstrap-select fm-cmp-mg">
+                                        <select class="selectpicker" name="golongan">
+                                            <option selected disabled>-- golongan --</option>
+                                            <?php
+                                                $sql = "SELECT * FROM golongan ORDER BY id_golongan ASC";
+                                                $result = mysqli_query($conn, $sql);
+                                                
+                                                if (mysqli_num_rows($result)>0){
+                                                    while ($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                            <option value="<?php echo $row['id_golongan']; ?>"><?php echo $row['nama_golongan']; ?></option>
+                                            <?php
+                                                }
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                        <i class="fa fa-cube"></i>
+                                    </div>
+                                    <div class="bootstrap-select fm-cmp-mg">
+                                        <select class="selectpicker" name="jenis_penggunaan">
+                                            <option selected disabled>-- jenis penggunaan --</option>
+                                            <?php
+                                                $sql = "SELECT * FROM jenis_penggunaan ORDER BY id_jenis_penggunaan ASC";
+                                                $result = mysqli_query($conn, $sql);
+                                                
+                                                if (mysqli_num_rows($result)>0){
+                                                    while ($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                            <option value="<?php echo $row['id_jenis_penggunaan']; ?>"><?php echo $row['nama_jenis_penggunaan']; ?></option>
+                                            <?php
+                                                }
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                </br>
+                                <button class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
-    <div class="sale-statistic-area">
+    <div class="sale-statistic-area mg-t-30">
         <div class="container">
             <div class="row">
                 <div class="sale-statistic-inner notika-shadow">
-                    <div class="data-table-area">
+                    <div class="data-table-area ">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="data-table-list">
                                 <div class="basic-tb-hd">
-                                    <h2>Data Harga</h2>
-                                    <p>Silahkan isikan data harga sesuai dengan golongan.</p>
+                                    <h2>Data Pengguna Terdaftar</h2>
+                                    <p>Data pengguna terdaftar di dalam sistem.</p>
                                 </div>
                                 <div class="table-responsive">
                                     <table id="data-table-basic" class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Nomor SAMB.</th>
-                                                <th>Nama Pengguna</th>
-                                                <th>Alamat</th>
+                                                <th>No sambungan</th>
+                                                <th>No rekening</th>
+                                                <th>Nama pengguna</th>
+                                                <th>Alamat pengguna</th>
                                                 <th>Golongan</th>
-                                                <th>Jenis</th>
-                                                <th>Nomor Rekening</th>
+                                                <th>Jenis penggunaan</th>
+                                                <th>Tgl pendaftaran</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                                $sql = "SELECT * FROM pengguna ORDER BY id_pengguna ASC";
+                                                $result = mysqli_query($conn, $sql);
+                                                
+                                                $count = 1;
+                                                
+                                                if (mysqli_num_rows($result)>0){
+                                                    while ($row = mysqli_fetch_assoc($result)){
+                                            ?>
                                             <tr>
-                                                <td>1</td>
-                                                <td>0473</td>
-                                                <td>Suryadi</td>
-                                                <td>Sukadana</td>
-                                                <td>Golongan I A</td>
-                                                <td>Rumah Yatim Piatu</td>
-                                                <td>0000271</td>
+                                                <td><?php echo $count; ?></td>
+                                                <td><?php echo $row['nomor_sambungan']; ?></td>
+                                                <td><?php echo $row['nomor_rekening']; ?></td>
+                                                <td><?php echo $row['nama_pengguna']; ?></td>
+                                                <td><?php echo $row['alamat_pengguna']; ?></td>
+                                                <td>
+                                                    <?php 
+                                                        $id_golongan = $row['golongan']; 
+                                                        $sql_golongan = "SELECT * FROM golongan WHERE id_golongan = '$id_golongan'";
+                                                        $result_golongan = mysqli_query($conn, $sql_golongan);
+                                                        $row_golongan = mysqli_fetch_assoc($result_golongan);
+
+                                                        echo $row_golongan['nama_golongan'];
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php 
+                                                        $id_jenis_penggunaan = $row['jenis_penggunaan']; 
+                                                        $sql_jenis_penggunaan = "SELECT * FROM jenis_penggunaan WHERE id_jenis_penggunaan = '$id_jenis_penggunaan'";
+                                                        $result_jenis_penggunaan = mysqli_query($conn, $sql_jenis_penggunaan);
+                                                        $row_jenis_penggunaan = mysqli_fetch_assoc($result_jenis_penggunaan);
+
+                                                        echo $row_jenis_penggunaan['nama_jenis_penggunaan'];
+                                                    ?>
+                                                </td>
+                                                <td><?php echo date('D, d F Y', strtotime($row['create_at'])); ?></td>
                                                 <td><a href="#"><i class="notika-icon notika-draft"></i></a> &nbsp; <a href="#"><i class="notika-icon notika-trash"></i></a></td>
                                             </tr>
+                                            <?php
+                                                $count = $count + 1;
+                                                }
+                                                }
+                                            ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Nomor SAMB.</th>
-                                                <th>Nama Pengguna</th>
-                                                <th>Alamat</th>
+                                                <th>No sambungan</th>
+                                                <th>No rekening</th>
+                                                <th>Nama pengguna</th>
+                                                <th>Alamat pengguna</th>
                                                 <th>Golongan</th>
-                                                <th>Jenis</th>
-                                                <th>Nomor Rekening</th>
+                                                <th>Jenis penggunaan</th>
+                                                <th>Tgl pendaftaran</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>

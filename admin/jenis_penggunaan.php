@@ -1,3 +1,15 @@
+<?php
+
+require_once  "./function/session.php";
+
+$access = $_SESSION['role'];
+
+if(isset($_POST['nama_jenis_penggunaan'])){
+    require_once "function/jenis_penggunaan_add.php";
+}
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -5,7 +17,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PAM APP</title>
+    <title>PDAM APP</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="../img/icons.png">
@@ -45,7 +57,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="logo-area">
                         <a href="#"><img src="../img/icons.png" style="width:45px; height:45px;" alt="" /><strong
-                                style="color:#fff; font-size:18px; margin-left:15px;">PAM APP.</strong></a>
+                                style="color:#fff; font-size:18px; margin-left:15px;">PDAM APP.</strong></a>
                     </div>
                 </div>
             </div>
@@ -72,113 +84,112 @@
         </div>
     </div>
 
-    <div class="breadcomb-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="breadcomb-list">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="breadcomb-wp">
-                                    <div class="breadcomb-icon">
-                                        <i class="notika-icon notika-form"></i>
-                                    </div>
-                                    <div class="breadcomb-ctn">
-                                        <h2>Tambah Data Harga</h2>
-                                        <p>Menu ini berisikan daftar harga pembayaran air. <span
-                                                class="bread-ntd">Isikan data sesuai dengan ketentuan.</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="form-element-area">
         <div class="container">
 
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="form-element-list mg-t-30">
+                    <div class="form-element-list">
                         <div class="cmp-tb-hd bcs-hd">
-                            <h2>Form Harga</h2>
-                            <p>Masukan data sesuai dengan field yang tersedia. </p>
+                            <h2>Form Jenis Penggunaan</h2>
+                            <p>Masukan data sesuai dengan form yang tersedia. </p>
                         </div>
+                        <form method="POST">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-star"></i>
+                                        <i class="fa fa-cube"></i>
                                     </div>
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select class="selectpicker">
-                                            <option selected disabled>-- golongan --</option>
-                                            <option>Golongan I A</option>
-                                            <option>Golongan I B</option>
-                                            <option>Golongan II A</option>
-                                            <option>Golongan II B</option>
-                                            <option>Golongan III A</option>
-                                            <option>Golongan III B</option>
-                                            <option>Golongan IV A</option>
-                                            <option>Golongan IV B</option>
-                                        </select>
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" placeholder="Nama jenis penggunaan ..." name="nama_jenis_penggunaan">
+                                        <span style="color: grey; font-size: 10px;">ex : Hidran dan ledeng umum</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-map"></i>
+                                        <i class="fa fa-calendar"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Jenis">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-dollar"></i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Tarif 0-10">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-dollar"></i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Tarif 11-20">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-dollar"></i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Tarif >20">
+                                        <input type="text" class="form-control" placeholder="Tanggal ..." value="<?php echo date('D, d F Y'); ?>" readonly>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 </br>
                                 <button class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="sale-statistic-area mg-t-30">
+        <div class="container">
+            <div class="row">
+                <div class="sale-statistic-inner notika-shadow">
+                    <div class="data-table-area ">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="data-table-list">
+                                <div class="basic-tb-hd">
+                                    <h2>Data Jenis Penggunaan</h2>
+                                    <p>Data jenis penggunaan terdaftar di dalam sistem.</p>
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="data-table-basic" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Jenis Penggunaan</th>
+                                                <th>Tanggal input</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                                $sql = "SELECT * FROM jenis_penggunaan ORDER BY id_jenis_penggunaan ASC";
+                                                $result = mysqli_query($conn, $sql);
+                                                
+                                                $count = 1;
+                                                
+                                                if (mysqli_num_rows($result)>0){
+                                                    while ($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $count; ?></td>
+                                                <td><?php echo $row['nama_jenis_penggunaan']; ?></td>
+                                                <td><?php echo date('D, d F Y', strtotime($row['create_at'])); ?></td>
+                                                <td><a href="#"><i class="notika-icon notika-draft"></i></a> &nbsp; <a href="#"><i class="notika-icon notika-trash"></i></a></td>
+                                            </tr>
+                                            <?php
+                                                $count = $count + 1;
+                                                }
+                                                }
+                                            ?>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Jenis Penggunaan</th>
+                                                <th>Tanggal input</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

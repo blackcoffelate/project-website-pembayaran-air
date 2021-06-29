@@ -1,3 +1,11 @@
+<?php
+
+require_once  "./function/session.php";
+
+$access = $_SESSION['role'];
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -13,7 +21,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="logo-area">
                         <a href="#"><img src="../img/icons.png" style="width:45px; height:45px;" alt="" /><strong
-                                style="color:#fff; font-size:18px; margin-left:15px;">PAM APP.</strong></a>
+                                style="color:#fff; font-size:18px; margin-left:15px;">PDAM APP.</strong></a>
                     </div>
                 </div>
             </div>
@@ -47,7 +55,7 @@
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class="website-traffic-ctn">
                             <h2><span class="counter">50,000</span></h2>
-                            <p>Total Website Traffics</p>
+                            <p>Total Pengguna</p>
                         </div>
                         <div class="sparkline-bar-stats1">9,4,8,6,5,6,4,8,3,5,9,5</div>
                     </div>
@@ -56,27 +64,9 @@
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class="website-traffic-ctn">
                             <h2><span class="counter">90,000</span>k</h2>
-                            <p>Website Impressions</p>
+                            <p>Total Tunggakan</p>
                         </div>
                         <div class="sparkline-bar-stats2">1,4,8,3,5,6,4,8,3,3,9,5</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
-                        <div class="website-traffic-ctn">
-                            <h2>$<span class="counter">40,000</span></h2>
-                            <p>Total Online Sales</p>
-                        </div>
-                        <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,5</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
-                        <div class="website-traffic-ctn">
-                            <h2><span class="counter">1,000</span></h2>
-                            <p>Total Support Tickets</p>
-                        </div>
-                        <div class="sparkline-bar-stats4">2,4,8,4,5,7,4,7,3,5,7,5</div>
                     </div>
                 </div>
             </div>
@@ -91,49 +81,42 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="data-table-list">
                                 <div class="basic-tb-hd">
-                                    <h2>Basic Example</h2>
-                                    <p>It's just that simple. Turn your simple table into a sophisticated
-                                        data table and offer your users a nice experience and great features
-                                        without any effort.</p>
+                                    <h2>Data Pengguna Terdaftar</h2>
+                                    <p>Data pengguna layanan PDAM Way Komering, Ogan Komering Ulu Timur.</p>
                                 </div>
                                 <div class="table-responsive">
                                     <table id="data-table-basic" class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
+                                                <th>#</th>
+                                                <th>Nomor SAMB.</th>
+                                                <th>Nama Pengguna</th>
+                                                <th>Alamat</th>
+                                                <th>Golongan</th>
+                                                <th>Jenis</th>
+                                                <th>Nomor Rekening</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>63</td>
-                                                <td>2011/07/25</td>
-                                                <td>$170,750</td>
+                                                <td>1</td>
+                                                <td>0473</td>
+                                                <td>Suryadi</td>
+                                                <td>Sukadana</td>
+                                                <td>Golongan I A</td>
+                                                <td>Rumah Yatim Piatu</td>
+                                                <td>0000271</td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
+                                                <th>#</th>
+                                                <th>Nomor SAMB.</th>
+                                                <th>Nama Pengguna</th>
+                                                <th>Alamat</th>
+                                                <th>Golongan</th>
+                                                <th>Jenis</th>
+                                                <th>Nomor Rekening</th>
                                             </tr>
                                         </tfoot>
                                     </table>

@@ -4,8 +4,8 @@ require_once  "./function/session.php";
 
 $access = $_SESSION['role'];
 
-if(isset($_POST['golongan'])){
-    require_once "function/harga_add.php";
+if(isset($_POST['nama_golongan'])){
+    require_once "function/golongan_add.php";
 }
 
 ?>
@@ -91,7 +91,7 @@ if(isset($_POST['golongan'])){
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
                         <div class="cmp-tb-hd bcs-hd">
-                            <h2>Form Harga</h2>
+                            <h2>Form Golongan</h2>
                             <p>Masukan data sesuai dengan form yang tersedia. </p>
                         </div>
                         <?php 
@@ -106,76 +106,19 @@ if(isset($_POST['golongan'])){
                                     <div class="form-ic-cmp">
                                         <i class="fa fa-users"></i>
                                     </div>
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select class="selectpicker" name="golongan">
-                                            <option disabled>-- golongan --</option>
-                                            <?php
-                                                $sql = "SELECT * FROM golongan ORDER BY id_golongan ASC";
-                                                $result = mysqli_query($conn, $sql);
-                                                
-                                                if (mysqli_num_rows($result)>0){
-                                                    while ($row = mysqli_fetch_assoc($result)){
-                                            ?>
-                                            <option value="<?php echo $row['id_golongan']; ?>"><?php echo $row['nama_golongan']; ?></option>
-                                            <?php
-                                                }
-                                                }
-                                            ?>
-                                        </select>
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" placeholder="Nama golongan ..." name="nama_golongan">
+                                        <span style="color: grey; font-size: 10px;">ex : Golongan I A</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
-                                        <i class="fa fa-cube"></i>
-                                    </div>
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select class="selectpicker" name="jenis_penggunaan">
-                                            <option disabled>-- jenis penggunaan --</option>
-                                            <?php
-                                                $sql = "SELECT * FROM jenis_penggunaan ORDER BY id_jenis_penggunaan ASC";
-                                                $result = mysqli_query($conn, $sql);
-                                                
-                                                if (mysqli_num_rows($result)>0){
-                                                    while ($row = mysqli_fetch_assoc($result)){
-                                            ?>
-                                            <option value="<?php echo $row['id_jenis_penggunaan']; ?>"><?php echo $row['nama_jenis_penggunaan']; ?></option>
-                                            <?php
-                                                }
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="fa fa-credit-card"></i>
+                                        <i class="fa fa-calendar"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Tarif 0-20 ..." name="tarif0-20">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="fa fa-credit-card"></i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Tarif 20-30 ..." name="tarif20-30">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="fa fa-credit-card"></i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control" placeholder="Tarif diatas 30 ..." name="tariflebih30">
+                                        <input type="text" class="form-control" placeholder="Tanggal ..." value="<?php echo date('D, d F Y'); ?>" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -202,8 +145,8 @@ if(isset($_POST['golongan'])){
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="data-table-list">
                                 <div class="basic-tb-hd">
-                                    <h2>Data Harga</h2>
-                                    <p>Data harga terdaftar di dalam sistem.</p>
+                                    <h2>Data Golongan</h2>
+                                    <p>Data golongan terdaftar di dalam sistem.</p>
                                 </div>
                                 <div class="table-responsive">
                                     <table id="data-table-basic" class="table table-striped">
@@ -211,17 +154,13 @@ if(isset($_POST['golongan'])){
                                             <tr>
                                                 <th>#</th>
                                                 <th>Golongan</th>
-                                                <th>Jenis penggunaan</th>
-                                                <th>Tarif 0-20</th>
-                                                <th>Tarif 20-30</th>
-                                                <th>Tarif diatas 30</th>
                                                 <th>Tanggal input</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $sql = "SELECT * FROM harga ORDER BY id_harga ASC";
+                                                $sql = "SELECT * FROM golongan ORDER BY id_golongan ASC";
                                                 $result = mysqli_query($conn, $sql);
                                                 
                                                 $count = 1;
@@ -231,29 +170,7 @@ if(isset($_POST['golongan'])){
                                             ?>
                                             <tr>
                                                 <td><?php echo $count; ?></td>
-                                                <td>
-                                                    <?php 
-                                                        $id_golongan = $row['golongan']; 
-                                                        $sql_golongan = "SELECT * FROM golongan WHERE id_golongan = '$id_golongan'";
-                                                        $result_golongan = mysqli_query($conn, $sql_golongan);
-                                                        $row_golongan = mysqli_fetch_assoc($result_golongan);
-
-                                                        echo $row_golongan['nama_golongan'];
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <?php 
-                                                        $id_jenis_penggunaan = $row['jenis_penggunaan']; 
-                                                        $sql_jenis_penggunaan = "SELECT * FROM jenis_penggunaan WHERE id_jenis_penggunaan = '$id_jenis_penggunaan'";
-                                                        $result_jenis_penggunaan = mysqli_query($conn, $sql_jenis_penggunaan);
-                                                        $row_jenis_penggunaan = mysqli_fetch_assoc($result_jenis_penggunaan);
-
-                                                        echo $row_jenis_penggunaan['nama_jenis_penggunaan'];
-                                                    ?>
-                                                </td>
-                                                <td>Rp. <?php echo number_format($row['tarif020']); ?></td>
-                                                <td>Rp. <?php echo number_format($row['tarif2030']); ?></td>
-                                                <td>Rp. <?php echo number_format($row['tariflebih30']); ?></td>
+                                                <td><?php echo $row['nama_golongan']; ?></td>
                                                 <td><?php echo date('D, d F Y', strtotime($row['create_at'])); ?></td>
                                                 <td><a href="#"><i class="notika-icon notika-draft"></i></a> &nbsp; <a href="#"><i class="notika-icon notika-trash"></i></a></td>
                                             </tr>
@@ -267,10 +184,6 @@ if(isset($_POST['golongan'])){
                                             <tr>
                                                 <th>#</th>
                                                 <th>Golongan</th>
-                                                <th>Jenis penggunaan</th>
-                                                <th>Tarif 0-20</th>
-                                                <th>Tarif 20-30</th>
-                                                <th>Tarif diatas 30</th>
                                                 <th>Tanggal input</th>
                                                 <th>Action</th>
                                             </tr>
